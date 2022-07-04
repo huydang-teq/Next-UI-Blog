@@ -1,0 +1,25 @@
+@mixin fz($px) {
+    font-size: calc($px/16) + rem;
+  }
+  
+  @mixin ip5 {
+    @media only screen and (max-width: 320px) {
+      @content;
+    }
+  }
+  @mixin xs {
+    @media only screen and (max-width: 374px) {
+      @content;
+    }
+  }
+  
+  @mixin sm {
+    @media only screen and (max-width: 360px) {
+      @content;
+    }
+  }
+  @mixin landscape {
+    @media screen and (min-width: 350px) and (max-width: 360px) {
+      @content;
+    }
+  }
