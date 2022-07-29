@@ -1,5 +1,5 @@
-import { BaseLayout } from "@src/Components/Layouts";
-import HomeContainer from "@src/Container/Home";
+import { BaseLayout } from "@src/components/layouts";
+import HomeContainer from "@src/container/Home";
 import { ReactElement } from "react";
 import { NextPageWithLayout } from "./_app";
 const Home: NextPageWithLayout = () => {
