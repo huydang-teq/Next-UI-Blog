@@ -1,9 +1,14 @@
-import { createTheme } from "@nextui-org/react";
+import { createTheme } from "@mui/material";
 export const lightTheme = createTheme({
-  type: "light",
-  theme: {
-    colors: {
-      background: "#f7f8f9",
+  palette: {
+    mode: "light",
+  },
+  typography: {
+    fontFamily: ["poppin"].join(","),
+    logo: {
+      fontSize: 26,
+      fontWeight: 900,
+      color: "#9932cc",
     },
   },
 });

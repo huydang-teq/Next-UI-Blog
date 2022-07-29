@@ -1,32 +1,29 @@
-import { NextUIProvider } from "@nextui-org/react";
-import { darkTheme, lightTheme } from "@src/Themes";
+import { ThemeProvider } from "@mui/material";
+import { BaseLayout } from "@src/components/layouts";
+import { lightTheme } from "@src/themes";
 import type { NextPage } from "next";
-import { ThemeProvider } from "next-themes";
 import type { AppProps } from "next/app";
 import type { ReactElement, ReactNode } from "react";
 import "../styles/globals.css";
-
+import { SessionProvider } from "next-auth/react";
+import { Session } from "next-auth";
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
+  session: Session | undefined | null;
 };
-function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout = Component.getLayout ?? ((page) => page);
-
+function MyApp({ Component, pageProps, session }: AppPropsWithLayout) {
+  const getLayout =
+    Component.getLayout ?? ((page) => <BaseLayout>{page}</BaseLayout>);
   return (
-    <ThemeProvider
-      defaultTheme="system"
-      attribute="class"
-      value={{
-        light: lightTheme.className,
-        dark: darkTheme.className,
-      }}
-    >
-      <NextUIProvider>{getLayout(<Component {...pageProps} />)}</NextUIProvider>
-    </ThemeProvider>
+    <SessionProvider session={session}>
+      <ThemeProvider theme={lightTheme}>
+        {getLayout(<Component {...pageProps} />)}
+      </ThemeProvider>
+    </SessionProvider>
   );
 }
 

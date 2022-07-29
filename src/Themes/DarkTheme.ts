@@ -1,9 +1,6 @@
-import { createTheme } from "@nextui-org/react";
+import { createTheme } from "@mui/material";
 export const darkTheme = createTheme({
-  type: "dark",
-  theme: {
-    colors: {
-      background: "#242d4a",
-    },
+  palette: {
+    mode: "dark",
   },
 });

@@ -1,23 +1,13 @@
-import { Container, Switch } from "@nextui-org/react";
-import { ILayout } from "@src/Types";
-import { useTheme as useNextTheme } from "next-themes";
+import { Box, Typography } from "@mui/material";
+import { ILayout } from "@src/types";
 import { Fragment } from "react";
 export const BaseLayout: React.FC<ILayout> = ({ children }) => {
-  const { setTheme } = useNextTheme();
-
   return (
     <Fragment>
-      <Container
-        css={{
-          minHeight: "100vh",
-          backgroundColor: "$background",
-        }}
-      >
-        <Switch
-          onChange={(e) => setTheme(e.target.checked ? "dark" : "light")}
-        />
-        {children}
-      </Container>
+      <Box sx={{ padding: "20px 10px 22px 15px" }}>
+        <Typography variant="logo">Gello</Typography>
+      </Box>
+      <Box sx={{ padding: "20px 24px 22px 24px" }}>{children}</Box>
     </Fragment>
   );
 };
